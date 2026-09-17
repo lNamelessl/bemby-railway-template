@@ -1,6 +1,6 @@
 # Bemby — Emby keep-alive & check-in panel, one click on Railway
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.app/new?github_url=https://github.com/liveinaus/bemby-railway-template)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.app/new?github_url=https://github.com/lNamelessl/bemby-railway-template)
 
 **Bemby** is a self-hosted panel that keeps your Emby accounts active: scheduled
 check-ins, automated watch sessions, and Telegram client jobs — all from one
@@ -23,10 +23,11 @@ A panel to keep your Emby account active*.
 
 1. Click the deploy button above.
 2. When the deploy finishes, open the panel's public domain.
-3. Log in with username `admin` and the generated `ADMIN_PASSWORD` from your
-   service's **Variables** tab in Railway.
-4. Change the admin password when prompted (the panel forces this on first login
-   with the generated password).
+3. Log in with username `admin` (or your `ADMIN_USERNAME`) and the generated
+   `ADMIN_PASSWORD` from your service's **Variables** tab in Railway.
+4. Change the admin password when prompted — the panel forces this on first
+   login, because `ADMIN_DEFAULT_PASSWORD` is preset to the same generated value
+   as `ADMIN_PASSWORD`.
 5. Add your Emby server URL and account credentials inside the panel, then create
    check-in / keep-alive jobs and pick a schedule.
 
@@ -35,7 +36,8 @@ A panel to keep your Emby account active*.
 | Variable | Required | Default | Notes |
 |---|---|---|---|
 | `JWT_SECRET` | Yes | auto-generated per deploy (`${{ secret(64, …) }}`) | Signs session tokens; never reuse across installs |
-| `ADMIN_PASSWORD` | Yes | auto-generated per deploy (`${{ secret(24, …) }}`) | Initial admin password; change it after first login |
+| `ADMIN_PASSWORD` | Yes | auto-generated per deploy (`${{ secret(24, …) }}`) | Initial admin password; the panel makes you replace it on first login |
+| `ADMIN_DEFAULT_PASSWORD` | Yes | same generated value as `ADMIN_PASSWORD` | Upstream compares the entered password against this to decide whether to force a change; keeping the two equal turns the first login into a forced password change |
 | `ADMIN_USERNAME` | No | `admin` (code default) | Set your own before first login if you like |
 | `TZ` | No | `UTC` (code default) | IANA name, e.g. `Australia/Sydney` — controls the scheduler's clock |
 | `TRUST_PROXY` | — | `1` (baked into the image) | Correct behind Railway's proxy; already set for you |
