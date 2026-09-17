@@ -1,6 +1,6 @@
 # Bemby — Emby keep-alive & check-in panel, one click on Railway
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.app/new?github_url=https://github.com/lNamelessl/bemby-railway-template)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/bemby-template)
 
 **Bemby** is a self-hosted panel that keeps your Emby accounts active: scheduled
 check-ins, automated watch sessions, and Telegram client jobs — all from one
